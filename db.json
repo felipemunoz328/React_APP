@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "David",
+      "lastName": "Doe",
+      "email": "david@gmail.com",
+      "age": 34,
+      "companyId": "1"
+    },
+    {
+      "id": "2",
+      "firstName": "Sebastian",
+      "lastName": "Ulloa",
+      "email": "sebastian@gmail.com",
+      "age": 46,
+      "companyId": "2"
+    },
+    {
+      "id": "3",
+      "firstName": "Mark",
+      "lastName": "Williams",
+      "email": "mark@gmail.com",
+      "age": 36,
+      "companyId": "3"
+    },
+    {
+      "id": "4",
+      "firstName": "Karen",
+      "lastName": "Jackson",
+      "email": "karen@gmail.com",
+      "age": 29,
+      "companyId": "3"
+    },
+    {
+      "id": "F4kPpdo"
+    },
+    {
+      "id": "aRmOplR"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "firstName": "Apple",
+      "description": "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It is considered one of the Big Four of technology along with Amazon, Google and Facebook"
+    },
+    {
+      "id": "2",
+      "firstName": "Microsoft",
+      "description": "Microsoft Corporation es una compañía tecnológica multinacional con sede en Redmond, Washington en Estados Unidos. Desarrolla, manufactura, licencia y provee soporte de software para computadores personales, servidores, dispositivos electrónicos y servicios"
+    },
+    {
+      "id": "3",
+      "firstName": "Google",
+      "description": "Google LLC es una compañía principal subsidiaria de la multinacional estadounidense Alphabet Inc., cuya especialización son los productos y servicios relacionados con Internet, software, dispositivos electrónicos y otras tecnologías."
+    }
+  ]
+}

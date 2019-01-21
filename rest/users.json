@@ -1,0 +1,16 @@
+{
+    "destino": {
+      "address": "Antonio varas",
+      "city": "santiago",
+      "country": "chile",
+      "county": "providencia",
+      "number": "880"
+    },
+    "inicio": {
+      "address": "apoquindo",
+      "city": "santiago",
+      "country": "chile",
+      "county": "las condes",
+      "number": "4820"
+    }
+}

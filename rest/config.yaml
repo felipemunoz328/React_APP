@@ -1,0 +1,38 @@
+
+- request:
+    method: GET
+    url: ^/rest/mash?$
+  response:
+    headers:
+      content-type: application/json
+    file: mash.json
+    latency : 300
+- request:
+    method: GET
+    url: ^/rest/messages?$
+  response:
+    headers:
+      content-type: application/json
+    file: messages.json
+    latency : 400
+
+- request:
+    method: GET
+    url: ^/rest/db?$
+  response:
+    headers:
+      content-type: application/json
+    file: db.json
+    latency : 400
+
+
+
+
+- request:
+    method: POST
+    url: ^/rest/users?$
+  response:
+    headers:
+      content-type: application/json
+    file: coordenadas.json
+    latency : 400

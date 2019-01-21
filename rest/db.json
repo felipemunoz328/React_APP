@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "David",
+      "lastName": "Doe",
+      "email": "david@gmail.com",
+      "age": 34,
+      "companyId": "1"
+    },
+    {
+      "id": "2",
+      "firstName": "Sebastian",
+      "lastName": "Ulloa",
+      "email": "sebastian@gmail.com",
+      "age": 46,
+      "companyId": "2"
+    },
+    {
+      "id": "3",
+      "firstName": "Mark",
+      "lastName": "Williams",
+      "email": "mark@gmail.com",
+      "age": 36,
+      "companyId": "3"
+    },
+    {
+      "id": "4",
+      "firstName": "Karen",
+      "lastName": "Jackson",
+      "email": "karen@gmail.com",
+      "age": 29,
+      "companyId": "3"
+    }
+    
+  ]
+}
