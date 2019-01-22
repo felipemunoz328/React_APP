@@ -18,19 +18,19 @@ import Tiempo from "../components/Tiempo";
       Destino: {
         screen: Destino,
         navigationOptions: {
-          title: 'Datos de destino'
+          title: 'Dirección de destino'
         }
       },
       Inicio: {
         screen: Inicio,
         navigationOptions: {
-          title: 'Datos de inicio'
+          title: 'Dirección de inicio'
         }
       },
       Tiempo: {
         screen: Tiempo,
         navigationOptions: {
-          title: 'Resultado'
+          title: 'Tiempo estimado de viaje'
         }
       }
     },

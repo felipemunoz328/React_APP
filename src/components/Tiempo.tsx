@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text,
-  View, Dimensions,
+  View, Dimensions, ActivityIndicator, Alert
 } from 'react-native';
-import {URL_USERS} from './../constants';
+
+import {URL_USERS} from './../constants/';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -49,7 +50,7 @@ class Tiempo extends Component<Props, State> {
 
     const {address, city, country, county, number, addressDes, cityDes, countryDes, countyDes, numberDes} = this.props.navigation.state.params;
 
-    const res = fetch(URL_USERS, {
+    fetch(URL_USERS, {
       
       method: 'POST',
       headers: {
@@ -78,8 +79,10 @@ class Tiempo extends Component<Props, State> {
     }),
     }).then((response) => response.json())
         .then((responseJson) => {
-          this.setState({resultado : responseJson})
-          console.log(responseJson);
+          if (typeof(responseJson) == "object"){
+            this.setState({resultado: "Direcciones mal ingresadas!!"})
+          }else{this.setState({resultado : responseJson})}
+         // console.log(this.state.resultado);
         })
         .catch((error) => {
     });
@@ -90,13 +93,45 @@ class Tiempo extends Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-        <View>
-          <Text style = {styles.textMain}>
-            {this.props.navigation.state.params.address}
-            {this.props.navigation.state.params.number}
-            {this.props.navigation.state.params.city}
-          </Text>
-        </View>
+
+          <View style = {styles.container}>        
+
+
+          {this.state.resultado > 0  || (typeof(this.state.resultado) == "string") ?
+        
+            <View >
+
+              <Text style = {{fontSize : 20, textAlign:'center', margin : 3}}>
+                  {`${this.props.navigation.state.params.address}, ${this.props.navigation.state.params.number}, ${this.props.navigation.state.params.city}`}
+              </Text>
+
+              <Text style = {{fontSize : 16, textAlign:'center', margin : 3}}>Hasta</Text>
+
+
+              <Text style = {{fontSize: 20, textAlign:'center', margin : 3}}>
+                  {`${this.props.navigation.state.params.addressDes}, ${this.props.navigation.state.params.numberDes}, ${this.props.navigation.state.params.cityDes}`}
+              </Text>
+
+              {(typeof(this.state.resultado)=="string") ?
+                  <View>
+                    <Text style = {styles.resultado}>
+                      {`${this.state.resultado}`}
+                    </Text>
+                  </View>:
+
+                  <View>
+                    <Text style = {styles.resultado}>
+                      {`${this.state.resultado} Minutos`}
+                    </Text>
+                  </View>
+              }
+
+            </View>
+            :<ActivityIndicator size="large" color="#11B8FF" />
+          }
+
+          </View>
+   
       </React.Fragment>
 
 
@@ -106,12 +141,29 @@ class Tiempo extends Component<Props, State> {
 }
 
 const styles = {
-  inputContainer: {
+  container: {
+    justifyContent: 'center' as 'center',
+    backgroundColor: '#FFFFFF',
+    flex: 1
   },
-  textMain : {
-    fontSize: 12
-  }
-}
 
+  inicioTitle:{
+    fontSize: 16,
+  },destinoText: {
+
+    
+    fontSize: 20
+  }, inicioText: {
+
+  },
+  resultado: {
+    fontSize: 26,
+    textAlign:'center' as 'center',
+    margin : 5,
+    fontWeight: "bold" as 'bold'
+    
+  },
+
+}
 
 export default Tiempo;
