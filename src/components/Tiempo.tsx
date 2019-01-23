@@ -67,19 +67,19 @@ class Tiempo extends Component<Props, State> {
       body: JSON.stringify(
 
         {
-        "destino": {
+        "Destino": {
           "address": addressDes,
-          "city": cityDes,
-          "country": countryDes,
-          "county": countyDes,
-          "number": numberDes
+          "ciudad": cityDes,
+          "comuna": countyDes,
+          "number": numberDes,
+          "pais": countryDes
         },
-        "inicio": {
+        "Inicio": {
           "address": address,
-          "city": city,
-          "country": country,
-          "county": county,
-          "number": number
+          "ciudad": city,
+          "comuna": county,
+          "number": number,
+          "pais": country,
         }
         
     }),

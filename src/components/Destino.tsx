@@ -110,7 +110,7 @@ class Destino extends Component<Props, State>{
                 <KeyboardAwareScrollView enableAutomaticScroll>
                     <ScrollView contentContainerStyle = {styles.ScrollContainer}>
                         <View style={styles.inputContainer}>
-                            <Text style={styles.text}>address</Text>
+                            <Text style={styles.text}>Dirección</Text>
                             <TextInput
                                 style={styles.inputStyle}
                                 placeholder={"Antonio varas"}
@@ -121,7 +121,7 @@ class Destino extends Component<Props, State>{
 
 
                         <View style={styles.inputContainer}>
-                            <Text style={styles.text}>city</Text>
+                            <Text style={styles.text}>Ciudad</Text>
                             <TextInput
                                 style={styles.inputStyle}
                                 placeholder={"santiago"}
@@ -132,7 +132,7 @@ class Destino extends Component<Props, State>{
 
 
                         <View style={styles.inputContainer}>
-                            <Text style={styles.text}>country</Text>
+                            <Text style={styles.text}>País</Text>
                             <TextInput
                                 style={styles.inputStyle}
                                 placeholder={"chile"}
@@ -143,7 +143,7 @@ class Destino extends Component<Props, State>{
 
 
                         <View style={styles.inputContainer}>
-                            <Text style={styles.text}>county</Text>
+                            <Text style={styles.text}>Comuna</Text>
                             <TextInput
                                 style={styles.inputStyle}
                                 placeholder={"providencia"}
@@ -154,7 +154,7 @@ class Destino extends Component<Props, State>{
 
 
                         <View style={styles.inputContainer}>
-                            <Text style={styles.text}>number</Text>
+                            <Text style={styles.text}>Number</Text>
                             <TextInput 
                                 keyboardType="numeric"
                                 returnKeyType="go"
