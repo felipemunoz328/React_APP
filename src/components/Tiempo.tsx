@@ -30,7 +30,7 @@ interface Props {
 
 
 interface State {
-  resultado: Number | String
+  resultado: Number | string
 }
 
 
@@ -82,9 +82,11 @@ class Tiempo extends Component<Props, State> {
           if (typeof(responseJson) == "object"){
             this.setState({resultado: "Direcciones mal ingresadas!!"})
           }else{this.setState({resultado : responseJson})}
-         // console.log(this.state.resultado);
+        console.log(responseJson)
         })
         .catch((error) => {
+          console.log(error)
+          this.setState({resultado: "Falló de conexión"})
     });
 
   }
@@ -101,30 +103,40 @@ class Tiempo extends Component<Props, State> {
         
             <View >
 
-              <Text style = {{fontSize : 20, textAlign:'center', margin : 3}}>
-                  {`${this.props.navigation.state.params.address}, ${this.props.navigation.state.params.number}, ${this.props.navigation.state.params.city}`}
-              </Text>
 
-              <Text style = {{fontSize : 16, textAlign:'center', margin : 3}}>Hasta</Text>
-
-
-              <Text style = {{fontSize: 20, textAlign:'center', margin : 3}}>
-                  {`${this.props.navigation.state.params.addressDes}, ${this.props.navigation.state.params.numberDes}, ${this.props.navigation.state.params.cityDes}`}
-              </Text>
-
-              {(typeof(this.state.resultado)=="string") ?
-                  <View>
-                    <Text style = {styles.resultado}>
-                      {`${this.state.resultado}`}
+              {this.state.resultado>0 ?
+                <View>
+                    <Text style = {{fontSize : 20, textAlign:'center', margin : 3}}>
+                        {`${this.props.navigation.state.params.address}, ${this.props.navigation.state.params.number}, ${this.props.navigation.state.params.city}`}
                     </Text>
-                  </View>:
 
-                  <View>
-                    <Text style = {styles.resultado}>
-                      {`${this.state.resultado} Minutos`}
+                    <Text style = {{fontSize : 16, textAlign:'center', margin : 3}}>Hasta</Text>
+
+
+                    <Text style = {{fontSize: 20, textAlign:'center', margin : 3}}>
+                        {`${this.props.navigation.state.params.addressDes}, ${this.props.navigation.state.params.numberDes}, ${this.props.navigation.state.params.cityDes}`}
                     </Text>
-                  </View>
+
+                    <Text style = {{fontSize: 25, textAlign:'center', margin : 3}}>
+                        {`${this.state.resultado} minutos`}
+                    </Text>
+
+                </View>:
+
+                    <View>
+                          {Alert.alert(
+                              'Error',
+                              this.state.resultado,
+                              [
+                                {text: 'OK', onPress: () => this.props.navigation.navigate("Inicio")},
+                              ],
+                              { cancelable: false }
+                          )}  
+                    </View>
+
               }
+
+              
 
             </View>
             :<ActivityIndicator size="large" color="#11B8FF" />

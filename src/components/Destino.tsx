@@ -22,6 +22,7 @@ interface Props {
                 number: number | string;
             }
         }
+
     }
 }
 
@@ -46,7 +47,7 @@ interface State {
 class Destino extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
-        
+        console.log(props);
 
         this.state = {
             address: "",
