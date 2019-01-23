@@ -25,6 +25,10 @@ interface Props {
               numberDes: Number | string,
           }
       }
+
+ 
+        
+      
   }
 }
 
@@ -43,13 +47,15 @@ class Tiempo extends Component<Props, State> {
       resultado : 0,
       
     };
+    //const {navigate} = this.props.navigation.navigate;
+
   }
 
 
   componentDidMount() {
 
     const {address, city, country, county, number, addressDes, cityDes, countryDes, countyDes, numberDes} = this.props.navigation.state.params;
-
+    console.log(this.props.navigation.state.params)
     fetch(URL_USERS, {
       
       method: 'POST',
@@ -105,6 +111,7 @@ class Tiempo extends Component<Props, State> {
 
 
               {this.state.resultado>0 ?
+               
                 <View>
                     <Text style = {{fontSize : 20, textAlign:'center', margin : 3}}>
                         {`${this.props.navigation.state.params.address}, ${this.props.navigation.state.params.number}, ${this.props.navigation.state.params.city}`}
