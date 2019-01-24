@@ -92,18 +92,18 @@ class Tiempo extends Component<Props, State> {
     }),
     }).then((response) => response.json())
         .then((responseJson) => {
-          if (typeof(responseJson) == "object"){
-            if(responseJson[0]){
-              const array = responseJson[0]
+          if (typeof(responseJson) == "object" && responseJson.alto_estimado && responseJson.bajo_estimado){
               this.setState({
-                resultado : array["duracion"],
-                costoAlto: array["alto_estimado"],
-                costoBajo: array["bajo_estimado"],
-                promedio : ((array["alto_estimado"] + array["bajo_estimado"])/2)
+                resultado : responseJson.duracion,
+                costoAlto: responseJson.alto_estimado,
+                costoBajo: responseJson.bajo_estimado,
+                promedio : (( responseJson.alto_estimado + responseJson.bajo_estimado)/2)
               })
-            }else{
-              this.setState({resultado: "Direcciones mal ingresadas!!"})
-            }
+            
+          }else{
+            this.setState({
+              resultado : "Direcciones mal ingresadas"
+            })
           }
           console.log(responseJson)
 

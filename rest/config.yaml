@@ -34,6 +34,6 @@
   response:
     headers:
       content-type: application/json
-    file: coordenadas.json
+    file: db.json
     latency : 400
   
