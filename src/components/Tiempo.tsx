@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import {URL_USERS} from './../constants/';
+import { FontVariantNumericProperty } from 'csstype';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -35,6 +36,9 @@ interface Props {
 
 interface State {
   resultado: Number | string
+  costoAlto: 0
+  costoBajo: 0
+  promedio: Number
 }
 
 
@@ -44,7 +48,10 @@ class Tiempo extends Component<Props, State> {
     super(props);
 
     this.state = {
-      resultado : 0,
+      resultado: 0,
+      costoAlto : 0,
+      costoBajo : 0,
+      promedio: 0
       
     };
     //const {navigate} = this.props.navigation.navigate;
@@ -86,12 +93,24 @@ class Tiempo extends Component<Props, State> {
     }).then((response) => response.json())
         .then((responseJson) => {
           if (typeof(responseJson) == "object"){
-            this.setState({resultado: "Direcciones mal ingresadas!!"})
-          }else{this.setState({resultado : responseJson})}
-        console.log(responseJson)
+            if(responseJson[0]){
+              const array = responseJson[0]
+              this.setState({
+                resultado : array["duracion"],
+                costoAlto: array["alto_estimado"],
+                costoBajo: array["bajo_estimado"],
+                promedio : ((array["alto_estimado"] + array["bajo_estimado"])/2)
+              })
+            }else{
+              this.setState({resultado: "Direcciones mal ingresadas!!"})
+            }
+          }
+          console.log(responseJson)
+
         })
+
         .catch((error) => {
-          console.log(error)
+          //console.log(error)
           this.setState({resultado: "Falló de conexión"})
     });
 
@@ -124,8 +143,21 @@ class Tiempo extends Component<Props, State> {
                         {`${this.props.navigation.state.params.addressDes}, ${this.props.navigation.state.params.numberDes}, ${this.props.navigation.state.params.cityDes}`}
                     </Text>
 
-                    <Text style = {{fontSize: 25, textAlign:'center', margin : 3}}>
-                        {`${this.state.resultado} minutos`}
+                    <Text style = {{fontSize: 20, textAlign:'center', margin : 3, paddingTop: 45, fontWeight : "bold"}}>
+                        {`${this.state.resultado} Minutos`}
+                    </Text>
+
+                    <Text style = {{fontSize: 20, textAlign:'center', margin : 3, fontWeight : "bold"}}>
+                        {`Costo alto : $ ${this.state.costoAlto}`}
+                    </Text>
+
+                    <Text style = {{fontSize: 20, textAlign:'center', margin : 3, fontWeight : "bold"}}>
+                        {`Costo bajo : $ ${this.state.costoBajo}`}
+                    </Text>
+
+                    <Text style = {{fontSize: 20, textAlign:'center', margin : 3, fontWeight : "bold"}}>
+                        {`Costo promedio : $ ${this.state.promedio}`}
+                        {console.log(this.state.promedio)}
                     </Text>
 
                 </View>:
@@ -182,6 +214,7 @@ const styles = {
     fontWeight: "bold" as 'bold'
     
   },
+
 
 }
 

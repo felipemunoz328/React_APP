@@ -1,5 +1,7 @@
 [
     {
-       "Otro" : 2
+       "duracion" : 2,
+       "alto_estimado" : 22222,
+       "bajo_estimado": 1233
       }
 ]
