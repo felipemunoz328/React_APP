@@ -62,7 +62,7 @@ class Tiempo extends Component<Props, State> {
   componentDidMount() {
 
     const {address, city, country, county, number, addressDes, cityDes, countryDes, countyDes, numberDes} = this.props.navigation.state.params;
-    console.log(this.props.navigation.state.params)
+    /*console.log(this.props.navigation.state.params)*/
     fetch(URL_USERS, {
       
       method: 'POST',
@@ -93,8 +93,9 @@ class Tiempo extends Component<Props, State> {
     }).then((response) => response.json())
         .then((responseJson) => {
           if (typeof(responseJson) == "object" && responseJson.alto_estimado && responseJson.bajo_estimado){
+            /*console.log(responseJson)*/
               this.setState({
-                resultado : responseJson.duracion,
+                resultado : responseJson.Duracion,
                 costoAlto: responseJson.alto_estimado,
                 costoBajo: responseJson.bajo_estimado,
                 promedio : (( responseJson.alto_estimado + responseJson.bajo_estimado)/2)
@@ -105,7 +106,7 @@ class Tiempo extends Component<Props, State> {
               resultado : "Direcciones mal ingresadas"
             })
           }
-          console.log(responseJson)
+          /*console.log(responseJson)*/
 
         })
 
@@ -120,7 +121,7 @@ class Tiempo extends Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-
+         
           <View style = {styles.container}>        
 
 
@@ -157,7 +158,7 @@ class Tiempo extends Component<Props, State> {
 
                     <Text style = {{fontSize: 20, textAlign:'center', margin : 3, fontWeight : "bold"}}>
                         {`Costo promedio : $ ${this.state.promedio}`}
-                        {console.log(this.state.promedio)}
+                        
                     </Text>
 
                 </View>:

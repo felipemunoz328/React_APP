@@ -1,1 +1,1 @@
-export const URL_USERS = 'http://192.168.52.127:8882/rest/user';
+export const URL_USERS = 'http://192.168.64.5:31157/user';
