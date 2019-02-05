@@ -1,0 +1,26 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new release build to the App Store"
+  lane :release do
+    increment_build_number(xcodeproj: "sura_project.xcodeproj")
+    match(type:"appstore")
+    build_app(scheme: "sura_project")
+    upload_to_app_store(
+      skip_waiting_for_build_processing
+    )
+    clean_build_artifacts
+
+  end
+
+  desc "Push a new release build to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "sura_project.xcodeproj")
+    match(type:"appstore")
+    build_app(scheme: "sura_project")
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+    clean_build_artifacts
+  end
+end

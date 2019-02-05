@@ -1,0 +1,8 @@
+app_identifier("org.reactjs.native.example.sura-project") # The bundle identifier of your app
+apple_id("transformacion.digital@afpcapital.cl") # Your Apple email address
+
+itc_team_id("119698618") # App Store Connect Team ID
+team_id("Z435N7MSYZ") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

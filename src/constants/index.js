@@ -1,1 +1,1 @@
-export const URL_USERS = 'http://192.168.64.5:31157/user';
+export const URL_USERS = 'http://ec2-18-234-35-88.compute-1.amazonaws.com:30625/user';

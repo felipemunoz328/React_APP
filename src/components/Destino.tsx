@@ -172,6 +172,8 @@ class Destino extends Component<Props, State>{
                                 <Text style={styles.buttonText}>Continuar</Text>
                             </TouchableOpacity>
                         </View>
+                        <KeyboardAwareScrollView />
+
 
                     
 

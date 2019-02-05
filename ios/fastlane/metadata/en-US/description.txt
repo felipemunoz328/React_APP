@@ -1,0 +1,9 @@
+Aplicación que permite calcular el tiempo y costos estimados de un viajes
+
+Datos requeridos:
+
+    - Dirección
+    - Ciudad
+    - País
+    - Comuna
+    - Número
