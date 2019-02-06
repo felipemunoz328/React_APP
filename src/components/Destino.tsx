@@ -2,28 +2,20 @@ import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Text,
     View, Dimensions, TextInput,
-    TouchableOpacity,ScrollView, Alert
+    TouchableOpacity,ScrollView, Alert, ViewStyle, TextStyle
 } from 'react-native';
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Tiempo from './../components/Tiempo'
+import {StackNavigator, NavigationScreenProp} from 'react-navigation'
 
 const windowWidth = Dimensions.get('window').width;
 
 interface Props {
     test?: Function | Object
-    navigation: {
-        state: {
-            params: {
-                address: string;
-                city: string;
-                country: string;
-                county: string;
-                number: number | string;
-            }
-        }
 
-    }
+    navigation: NavigationScreenProp<any,any> 
+
 }
 
 
@@ -47,7 +39,7 @@ interface State {
 class Destino extends Component<Props, State>{
     constructor(props: Props) {
         super(props);
-        console.log(props);
+        //console.log(props);
 
         this.state = {
             address: "",
@@ -108,7 +100,7 @@ class Destino extends Component<Props, State>{
         return (
             <React.Fragment>
                 <KeyboardAwareScrollView enableAutomaticScroll>
-                    <ScrollView contentContainerStyle = {styles.ScrollContainer}>
+                    <ScrollView contentContainerStyle={styles.ScrollContainer}>
                         <View style={styles.inputContainer}>
                             <Text style={styles.text}>Dirección</Text>
                             <TextInput
@@ -167,7 +159,7 @@ class Destino extends Component<Props, State>{
                         </View>
 
 
-                        <View style={styles.inputContainer}>
+                        <View style={{backgroundColor: 'white', padding: 20}}>
                             <TouchableOpacity style={styles.button} onPress = {this.continuar}>
                                 <Text style={styles.buttonText}>Continuar</Text>
                             </TouchableOpacity>
@@ -224,7 +216,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'flex-start',
         paddingTop: 18,
-  },
+  } as ViewStyle,
 }
 
 export default Destino;

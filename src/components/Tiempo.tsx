@@ -1,11 +1,13 @@
+
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text,
   View, Dimensions, ActivityIndicator, Alert
 } from 'react-native';
 
-import {URL_USERS} from './../constants/';
-import { FontVariantNumericProperty } from 'csstype';
+import { StackNavigator, NavigationScreenProp } from 'react-navigation';
+
+import {URL_USERS} from './../constants';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -27,15 +29,15 @@ interface Props {
           }
       }
 
- 
-        
-      
+  navigation: NavigationScreenProp<any,any> 
+
   }
 }
 
 
+
 interface State {
-  resultado: Number | string
+  resultado: Number | string 
   costoAlto: 0
   costoBajo: 0
   promedio: Number
@@ -46,6 +48,7 @@ class Tiempo extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+    console.log(props)
 
     this.state = {
       resultado: 0,
@@ -61,8 +64,8 @@ class Tiempo extends Component<Props, State> {
 
   componentDidMount() {
 
-    const {address, city, country, county, number, addressDes, cityDes, countryDes, countyDes, numberDes} = this.props.navigation.state.params;
-    /*console.log(this.props.navigation.state.params)*/
+  const {address, city, country, county, number, addressDes, cityDes, countryDes, countyDes, numberDes} = this.props.navigation.state.params;
+    console.log(this.props.navigation.state.params)
     fetch(URL_USERS, {
       
       method: 'POST',
@@ -165,14 +168,14 @@ class Tiempo extends Component<Props, State> {
                 </View>:
 
                     <View>
-                          {Alert.alert(
-                              'Error',
-                              this.state.resultado,
-                              [
-                                {text: 'OK', onPress: () => this.props.navigation.navigate("Inicio")},
-                              ],
-                              { cancelable: false }
-                          )}  
+                      {Alert.alert(
+                          'Error',
+                          this.state.resultado,
+                          [
+                            {text: 'OK', onPress: () => this.props.navigation.navigate("Inicio")},
+                          ],
+                          { cancelable: false }
+                      )}  
                     </View>
 
               }

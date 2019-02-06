@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Text,
     View, Dimensions, TextInput,
-    TouchableOpacity,ScrollView, Alert
+    TouchableOpacity,ScrollView, Alert, ViewStyle
 } from 'react-native';
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -17,6 +17,7 @@ interface styles{
 
 interface Props {
     test?: Function | Object
+    navigation: NavigationScreenProp<any,any> 
    // navigation?: NavigationProp<any, NavigationAction>
 
 }
@@ -70,7 +71,7 @@ class Inicio extends Component<Props, State>{
         return (
             <React.Fragment>
                 <KeyboardAwareScrollView enableAutomaticScroll>
-                <ScrollView contentContainerStyle = {styles.ScrollContainer}>
+                <ScrollView contentContainerStyle = {styles.ScrollContainer} >
                         <View style={styles.inputContainer}>
                             <Text style={styles.text}>Dirección</Text>
                             <TextInput
@@ -129,16 +130,18 @@ class Inicio extends Component<Props, State>{
                         </View>
 
 
-                        <View style={styles.inputContainer}>
+                        <View style={styles.containerButton}>
                             <TouchableOpacity style={styles.button}  onPress={this.continuar} >
                                 <Text style={styles.buttonText}>Continuar</Text>
                             </TouchableOpacity>
-                        </View>
+                         </View>
+
 
 
 
                     </ScrollView>
                 </KeyboardAwareScrollView>
+
 
             </React.Fragment>
 
@@ -151,6 +154,7 @@ const styles = {
     inputContainer: {
         paddingTop: 20,
         backgroundColor: 'white'
+        
     },
     text: {
         fontSize: 14
@@ -172,6 +176,7 @@ const styles = {
         borderRadius: 6,
         backgroundColor: '#11B8FF',
         paddingTop: 10,
+        
     },
     buttonText: {
         color: 'white', fontSize: 20,
@@ -182,7 +187,12 @@ const styles = {
         alignItems: 'center' ,
         justifyContent: 'flex-start',
         paddingTop: 18,
-  },
+    } as ViewStyle,
+    containerButton: {
+        padding: 20,
+        backgroundColor: 'white',
+        flex: 1
+    }
 }
 
 export default Inicio;
